@@ -30,21 +30,21 @@ function addAllCatsToList(data) {
   refs.breedEl.insertAdjacentHTML('beforeend', catOption);
   toggleLoadingPhrase();
 
-  catIds = new SlimSelect({
-    select: '.breed-select',
-    events: {
-      afterClose: () => {
-        catToFind = catIds.selectEl.value;
-        findCatInfo(catToFind);
-      },
-    },
-  });
+  // catIds = new SlimSelect({
+  //   select: '.breed-select',
+  //   events: {
+  //     afterClose: () => {
+  //       catToFind = catIds.selectEl.value;
+  //       findCatInfo(catToFind);
+  //     },
+  //   },
+  // });
 
   refs.breedEl.classList.remove('is-hidden');
 }
 
 function findCatInfo(event) {
-  const catId = event;
+  const catId = event.currentTarget.value;
   if (catId === shownCat) {
     return;
   }
