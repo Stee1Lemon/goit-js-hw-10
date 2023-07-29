@@ -18,7 +18,6 @@ fetchCatByBreed;
 
 // створити клас і внести змінну туди
 let shownCat = '';
-let catToFind = '';
 
 function addAllCatsToList(data) {
   const catOption = data
@@ -29,16 +28,6 @@ function addAllCatsToList(data) {
     .join('');
   refs.breedEl.insertAdjacentHTML('beforeend', catOption);
   toggleLoadingPhrase();
-
-  // catIds = new SlimSelect({
-  //   select: '.breed-select',
-  //   events: {
-  //     afterClose: () => {
-  //       catToFind = catIds.selectEl.value;
-  //       findCatInfo(catToFind);
-  //     },
-  //   },
-  // });
 
   refs.breedEl.classList.remove('is-hidden');
 }
