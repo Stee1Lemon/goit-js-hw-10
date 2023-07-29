@@ -11,7 +11,7 @@ const refs = {
   errorEl: document.querySelector('.error'),
 };
 
-refs.breedEl.addEventListener('click', findCatInfo);
+refs.breedEl.addEventListener('change', findCatInfo);
 
 fetchBreeds().then(addAllCatsToList).catch(showError);
 fetchCatByBreed;
