@@ -27,7 +27,10 @@ function addAllCatsToList(data) {
     })
     .join('');
   refs.breedEl.insertAdjacentHTML('beforeend', catOption);
-  toggleLoadingPhrase();
+
+  new SlimSelect({
+    select: '#breed-select',
+  });
 
   refs.breedEl.classList.remove('is-hidden');
 }
@@ -51,15 +54,12 @@ function showCatInfo(item) {
 }
 
 function showError(error) {
-  if (error.response) {
+  if (error) {
     toggleLoadingPhrase();
-    setTimeout(() => {
-      refs.errorEl.classList.remove('is-hidden');
-    }, 4000);
-    console.log(error.response.status);
     Notiflix.Notify.failure(
       'Oops! Something went wrong! Try reloading the page!'
     );
+    console.log(error.message);
   }
 }
 
