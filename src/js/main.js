@@ -59,6 +59,8 @@ function showError(error) {
     Notiflix.Notify.failure(
       'Oops! Something went wrong! Try reloading the page!'
     );
+    refs.loadingEl.classList.add('is-hidden');
+    refs.catInfoEl.classList.add('is-hidden');
     console.log(error.message);
   }
 }
