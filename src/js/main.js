@@ -40,8 +40,8 @@ function findCatInfo(event) {
   if (catId === shownCat) {
     return;
   }
-  toggleLoadingPhrase();
-  toggleCatInfo();
+  makeCatInfoInvisible();
+  makeLoadingVisible();
   fetchCatByBreed(catId).then(showCatInfo).catch(showError);
 }
 
@@ -49,18 +49,16 @@ function showCatInfo(item) {
   const catImg = item[0];
   const catInfo = catImg.breeds[0];
   makeCatCard(catImg, catInfo);
-  toggleLoadingPhrase();
-  toggleCatInfo();
+  makeCatInfoVisible();
+  makeLoadingInvisible();
 }
 
 function showError(error) {
   if (error) {
-    toggleLoadingPhrase();
     Notiflix.Notify.failure(
       'Oops! Something went wrong! Try reloading the page!'
     );
-    refs.loadingEl.classList.add('is-hidden');
-    refs.catInfoEl.classList.add('is-hidden');
+    makeLoadingInvisible();
     console.log(error.message);
   }
 }
@@ -79,10 +77,23 @@ function makeCatCard(catImg, catInfo) {
   shownCat = catInfo.id;
 }
 
-function toggleLoadingPhrase() {
-  refs.loadingEl.classList.toggle('is-hidden');
+function makeLoadingVisible() {
+  refs.loadingEl.classList.remove('is-hidden');
+}
+function makeLoadingInvisible() {
+  refs.loadingEl.classList.add('is-hidden');
 }
 
-function toggleCatInfo() {
-  refs.catInfoEl.classList.toggle('is-hidden');
+function makeCatInfoVisible() {
+  refs.catInfoEl.classList.remove('is-hidden');
 }
+function makeCatInfoInvisible() {
+  refs.catInfoEl.classList.add('is-hidden');
+}
+
+// function toggleCatInfo() {
+//   refs.catInfoEl.classList.toggle('is-hidden');
+// }
+// function toggleLoadingPhrase() {
+//   refs.loadingEl.classList.toggle('is-hidden');
+// }
